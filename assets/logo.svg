@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 312 72" role="img" aria-label="JJ Casa Limpa">
+  <g transform="translate(2 2) scale(1.06)">
+    <path d="M32 7 59 30h-6v25q0 3-3 3H14q-3 0-3-3V30H5Z" fill="#0891B2" stroke="#0891B2" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M32 26.5s-9.5 11.5-9.5 18a9.5 9.5 0 0 0 19 0c0-6.5-9.5-18-9.5-18Z" fill="#fff"/>
+    <path d="M27.4 45.2a4.8 4.8 0 0 0 3.8 4.7" fill="none" stroke="#0891B2" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="m51 2.5 1.9 5.4 5.4 1.9-5.4 1.9L51 17.1l-1.9-5.4-5.4-1.9 5.4-1.9Z" fill="#16A34A"/>
+    <path d="m59.6 16.5 1 2.8 2.8 1-2.8 1-1 2.8-1-2.8-2.8-1 2.8-1Z" fill="#16A34A"/>
+  </g>
+  <text x="80" y="49" font-family="Nunito, 'Arial Rounded MT Bold', 'Segoe UI', Arial, sans-serif" font-size="34" font-weight="800" letter-spacing="-0.5">
+    <tspan fill="#0E7490">JJ</tspan><tspan fill="#0F2A3D"> Casa Limpa</tspan>
+  </text>
+</svg>

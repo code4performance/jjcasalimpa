@@ -1,0 +1,246 @@
+/* JJ Casa Limpa — painel administrativo.
+   Desktop first: a base é o computador (onde a equipe cadastra os produtos);
+   telas menores são adaptadas com max-width 1023px (tablet) e 767px (celular).
+   Cores, botões e campos vêm de styles.css. */
+
+:root { --header-h: 68px; }
+
+.admin-main { padding: var(--space-6) 0 var(--space-7); }
+.admin-main .container { max-width: 1320px; }
+
+/* ---------- Login e telas de conta ---------- */
+.auth-card {
+  width: min(440px, 100%);
+  margin: var(--space-7) auto;
+  padding: var(--space-6);
+  background: var(--c-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+.auth-card h1 { font-size: 1.5rem; font-weight: 900; margin-bottom: var(--space-1); }
+.auth-card > p { color: var(--c-muted); margin-bottom: var(--space-4); }
+.auth-card .btn-block { margin-top: var(--space-4); }
+.auth-links { margin-top: var(--space-3); text-align: center; }
+
+/* ---------- Abas ---------- */
+.tabs {
+  display: inline-flex;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  margin-bottom: var(--space-5);
+  background: var(--c-soft);
+  border-radius: var(--radius-pill);
+}
+.tab {
+  min-width: 160px;
+  min-height: var(--tap);
+  padding: 0 var(--space-5);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  font-weight: 800;
+  color: var(--c-primary-strong);
+}
+.tab[aria-selected="true"] { background: var(--c-surface); box-shadow: var(--shadow-sm); color: var(--c-text); }
+
+/* ---------- Barra de ferramentas ---------- */
+.admin-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-3);
+}
+.admin-toolbar .search { flex: 0 1 420px; }
+.admin-count { color: var(--c-muted); font-size: 0.9rem; font-weight: 600; margin-bottom: var(--space-3); }
+
+/* ---------- Tabela de produtos ---------- */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--c-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.product-table th {
+  padding: var(--space-3);
+  background: var(--c-soft);
+  color: var(--c-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+}
+.product-table td {
+  padding: var(--space-2) var(--space-3);
+  border-top: 1px solid var(--c-border);
+  vertical-align: middle;
+}
+.product-table tbody tr:hover td { background: #F8FCFD; }
+.product-table tr.is-inactive td { color: var(--c-muted); }
+.product-table tr.is-inactive .col-img img { opacity: 0.5; }
+.product-table .col-img { width: 72px; }
+.product-table .col-img img { width: 52px; height: 52px; border-radius: var(--radius-sm); object-fit: cover; background: var(--c-soft); }
+.product-table .col-title { font-weight: 700; line-height: 1.3; }
+.product-table .col-title small { display: none; }
+.product-table .col-category { color: var(--c-muted); }
+.product-table .col-price { white-space: nowrap; }
+.product-table .col-actions { white-space: nowrap; text-align: right; }
+.product-table .col-actions .btn-icon { display: inline-flex; }
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  background: #EEF2F4;
+  color: var(--c-muted);
+  font-size: 0.8rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.status-active { background: #FDECEC; color: var(--c-promo-strong); }
+.status-scheduled { background: var(--c-soft); color: var(--c-primary-strong); }
+.status-expired { background: #EEF2F4; color: var(--c-muted); }
+td .status-none { background: none; padding: 0; font-weight: 600; }
+
+/* ---------- Janela do formulário de produto ---------- */
+.admin-sheet {
+  width: min(1040px, calc(100% - 4rem));
+  height: fit-content;
+  max-height: min(90vh, 960px);
+  margin: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+.form-section { display: grid; align-content: start; }
+.form-section h3 { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3); font-size: 1rem; font-weight: 800; }
+.panel { padding: var(--space-4); border: 1px solid var(--c-border); border-radius: var(--radius-lg); background: var(--c-bg); }
+.panel + .panel { margin-top: var(--space-4); }
+.row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); margin-top: var(--space-4); }
+.row-2 .field + .field { margin-top: 0; }
+.field + .row-2 { margin-top: var(--space-4); }
+.field-label { font-weight: 700; font-size: 0.95rem; }
+.push-left { margin-right: auto; color: var(--c-danger); flex: 0 0 auto !important; }
+
+/* ---------- Fotos ---------- */
+.photos { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-2); }
+.photo {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  background: var(--c-soft);
+}
+.photo.is-main { border-color: var(--c-accent); }
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+.photo-tag { position: absolute; top: 4px; left: 4px; padding: 1px 6px; border-radius: var(--radius-pill); background: var(--c-accent); color: #fff; font-size: 0.7rem; font-weight: 800; }
+.photo-actions {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(transparent, rgb(15 42 61 / 0.75));
+}
+.photo-actions button { display: grid; place-items: center; width: 32px; height: 32px; border: 0; background: none; color: #fff; }
+.photo-actions button svg { width: 18px; height: 18px; }
+.photo-status {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  background: rgb(255 255 255 / 0.88);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-align: center;
+}
+.photo-status.is-error { color: var(--c-danger); }
+.photo-status .btn-sm { min-height: 30px; padding: 0 var(--space-2); font-size: 0.75rem; }
+.photo-add {
+  position: relative;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: var(--space-1);
+  aspect-ratio: 1;
+  border: 2px dashed var(--c-border);
+  border-radius: var(--radius);
+  background: var(--c-surface);
+  color: var(--c-primary-strong);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-align: center;
+  cursor: pointer;
+}
+.photo-add svg { width: 28px; height: 28px; }
+.photo-add input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.photo-add:focus-within { outline: 3px solid var(--c-primary); outline-offset: 2px; }
+.photo-add.is-disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- Configurações ---------- */
+.settings-card { max-width: 760px; padding: var(--space-5); background: var(--c-surface); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+.settings-card .btn { margin-top: var(--space-4); }
+
+@media (hover: hover) {
+  .photo-add:hover { border-color: var(--c-primary); }
+}
+
+/* ---------- Tablet: formulário em tela cheia, uma coluna ---------- */
+@media (max-width: 1023px) {
+  :root { --header-h: 60px; }
+  .admin-main { padding-top: var(--space-4); }
+  .admin-sheet { width: 100%; max-width: 100%; height: 100%; max-height: 100%; margin: 0; border-radius: 0; box-shadow: none; }
+  .form-grid { grid-template-columns: 1fr; gap: var(--space-4); }
+  .product-table .col-category, .product-table thead .th-category { display: none; }
+  .product-table .col-title small { display: block; color: var(--c-muted); font-weight: 600; }
+}
+
+/* ---------- Celular: lista em cartões ---------- */
+@media (max-width: 767px) {
+  .admin-main { padding-bottom: var(--space-6); }
+  .auth-card { margin: var(--space-4) auto; padding: var(--space-5) var(--space-4); }
+  .tabs { display: flex; }
+  .tab { flex: 1; min-width: 0; padding: 0 var(--space-3); }
+  .admin-toolbar { flex-direction: column; align-items: stretch; }
+  .admin-toolbar .search { flex: none; }
+
+  .product-table { background: none; box-shadow: none; border-radius: 0; overflow: visible; }
+  .product-table thead { display: none; }
+  .product-table tbody { display: grid; gap: var(--space-3); }
+  .product-table tr {
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    grid-template-areas:
+      "img title title"
+      "img price price"
+      "status status status"
+      "active active actions";
+    gap: var(--space-1) var(--space-3);
+    padding: var(--space-3);
+    background: var(--c-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+  .product-table td { display: block; padding: 0; border: 0; min-width: 0; }
+  .product-table tbody tr:hover td { background: none; }
+  .product-table .col-img { grid-area: img; width: auto; }
+  .product-table .col-img img { width: 64px; height: 64px; }
+  .product-table .col-title { grid-area: title; }
+  .product-table .col-price { grid-area: price; }
+  .product-table .col-status { grid-area: status; }
+  .product-table .col-status .status-none { display: none; }
+  .product-table .col-active { grid-area: active; }
+  .product-table .col-actions { grid-area: actions; display: flex; gap: var(--space-1); justify-content: flex-end; align-items: center; }
+
+  .photos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .photo-actions button { width: 36px; height: 36px; }
+  .row-2 { grid-template-columns: 1fr; }
+  .row-2 .field + .field { margin-top: var(--space-4); }
+  .settings-card { padding: var(--space-4); }
+}

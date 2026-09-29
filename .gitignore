@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Configurações locais de ferramentas
+.claude/settings.local.json
