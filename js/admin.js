@@ -36,7 +36,10 @@ async function handleSession(session) {
     toast('Não foi possível verificar sua permissão. Tente novamente.', 'error');
     return showView('login');
   }
-  if (!admin) return showView('denied');
+  if (!admin) {
+    $('#denied-email').textContent = session.user?.email ?? '';
+    return showView('denied');
+  }
   showView('panel');
   if (!panelLoaded) {
     panelLoaded = true;
@@ -74,15 +77,32 @@ $('#login').addEventListener('submit', async (e) => {
   const { error } = await supabase.auth.signInWithPassword({ email, password });
   btn.disabled = false;
   if (error) {
-    errorEl.textContent = error.status === 400 || /invalid/i.test(error.message)
-      ? 'E-mail ou senha inválidos'
-      : 'Não foi possível entrar. Verifique sua conexão e tente novamente.';
+    console.error('[admin] login', error);
+    errorEl.textContent = loginErrorMessage(error);
     form.password.value = '';
     form.password.focus();
   } else {
     form.reset();
   }
 });
+
+function loginErrorMessage(error) {
+  switch (error.code) {
+    case 'invalid_credentials':
+      return 'E-mail ou senha inválidos';
+    case 'email_not_confirmed':
+      return 'Este e-mail ainda não foi confirmado. No Supabase, confirme o usuário (Authentication → Users) ou use o link enviado por e-mail.';
+    case 'user_banned':
+      return 'Este usuário está bloqueado.';
+    case 'over_request_rate_limit':
+    case 'over_email_send_rate_limit':
+      return 'Muitas tentativas. Aguarde alguns minutos e tente novamente.';
+    default:
+      if (error.status === 400 && /invalid/i.test(error.message)) return 'E-mail ou senha inválidos';
+      if (!error.status) return 'Não foi possível entrar. Verifique sua conexão e tente novamente.';
+      return `Não foi possível entrar (${error.code || error.status}: ${error.message}).`;
+  }
+}
 
 $('#go-forgot').addEventListener('click', () => {
   $('#forgot-email').value = $('#login-email').value;
@@ -107,7 +127,10 @@ $('#forgot').addEventListener('submit', async (e) => {
   });
   btn.disabled = false;
   if (error && error.status !== 400) {
-    errorEl.textContent = 'Não foi possível enviar agora. Tente novamente em alguns minutos.';
+    console.error('[admin] recuperar senha', error);
+    errorEl.textContent = error.status === 429
+      ? 'Limite de e-mails atingido. Aguarde cerca de 1 hora e tente novamente.'
+      : 'Não foi possível enviar agora. Tente novamente em alguns minutos.';
     return;
   }
   $('#forgot-sent').hidden = false;
