@@ -53,7 +53,7 @@
 
 ## 8. Publicação e documentação
 
-- [ ] 8.1 Criar `netlify.toml` (sem build, publish na raiz, cabeçalhos de cache/segurança) e verificar publicando por arraste em app.netlify.com/drop que as duas páginas carregam
+- [x] 8.1 Publicar o site estático (decisão posterior: GitHub Pages em vez de Netlify, pois o Supabase gratuito não serve HTML; `netlify.toml` mantido como alternativa) e verificar que loja (`/`) e admin (`/admin/`) carregam no endereço público
 - [ ] 8.2 Criar `.github/workflows/keepalive.yml` opcional (leitura semanal ao Supabase com a chave anon via secrets) e verificar a sintaxe executando-o manualmente (`workflow_dispatch`)
 - [ ] 8.3 Escrever `README.md` em português: visão geral, passo a passo do Supabase (schema, desativar cadastro, criar admin, URL de redirect), `config.js`, publicação no Netlify (arrastar pasta ou GitHub), alternativas Cloudflare Pages/GitHub Pages, domínio próprio, limites do plano gratuito, como reativar projeto pausado e como rodar os testes; verificar seguindo o guia do zero em um projeto Supabase novo
 - [ ] 8.4 Executar o roteiro completo de verificação (todos os cenários das 4 specs) no site publicado, em celulares reais (Android/Chrome e iPhone/Safari) e no desktop (Chrome e outro navegador, navegando também só com teclado), e rodar `npm test` com todos os testes passando
