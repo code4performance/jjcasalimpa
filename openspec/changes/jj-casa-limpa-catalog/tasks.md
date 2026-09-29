@@ -13,10 +13,10 @@
 
 ## 3. Banco de dados e segurança (Supabase)
 
-- [ ] 3.1 Escrever `supabase/schema.sql` com tabelas `products`, `settings` (linha única id=1), `admins`, checks (título, preços, promoção, datas, máx. 5 imagens, regex do WhatsApp) e trigger de `updated_at`; verificar executando no SQL Editor de um projeto de teste sem erros
-- [ ] 3.2 Adicionar ao schema a função `is_admin()` e políticas RLS (leitura pública só de produtos ativos e settings; escrita só admin); verificar via API com a chave anon que `insert`/`update`/`delete` são recusados e que produtos inativos não retornam
+- [x] 3.1 Escrever `supabase/schema.sql` com tabelas `products`, `settings` (linha única id=1), `admins`, checks (título, preços, promoção, datas, máx. 5 imagens, regex do WhatsApp) e trigger de `updated_at`; verificar executando no SQL Editor de um projeto de teste sem erros
+- [x] 3.2 Adicionar ao schema a função `is_admin()` e políticas RLS (leitura pública só de produtos ativos e settings; escrita só admin); verificar via API com a chave anon que `insert`/`update`/`delete` são recusados e que produtos inativos não retornam
 - [ ] 3.3 Adicionar ao schema o bucket público `product-images` e políticas de Storage (leitura pública, escrita só admin); verificar que upload anônimo é recusado e que a URL pública de uma imagem abre no navegador
-- [ ] 3.4 Adicionar ao schema 3–4 produtos de exemplo (um com promoção) marcados para fácil remoção; verificar que aparecem na consulta anônima
+- [x] 3.4 Adicionar ao schema 3–4 produtos de exemplo (um com promoção) marcados para fácil remoção; verificar que aparecem na consulta anônima
 
 ## 4. Lógica pura e testes (`js/lib`)
 
