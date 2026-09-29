@@ -26,7 +26,7 @@ Duas páginas: `index.html` (catálogo + carrinho) e `admin.html` (login + paine
 
 ### 2. Estrutura de arquivos
 ```
-index.html            admin.html
+index.html (loja, /)  admin/index.html (painel, /admin/; admin.html redireciona)
 assets/  logo.svg, logo-mark.svg (símbolo), favicon.svg, og-image.png, placeholder.svg
 css/     styles.css   (tokens de cor/tipografia em :root, compartilhado; mobile first)
          admin.css    (layout do painel; desktop first)

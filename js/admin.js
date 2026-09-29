@@ -7,7 +7,7 @@ import { isAllowedImage, resizeImage } from './lib/image.js';
 import { parseBRL } from './lib/money.js';
 import { $, $$, esc, icons, toast, openDialog, confirmDialog, showErrors, setFieldError } from './ui.js';
 
-const PLACEHOLDER = 'assets/placeholder.svg';
+const PLACEHOLDER = '../assets/placeholder.svg';
 const VIEWS = ['loading', 'login', 'forgot', 'reset', 'denied', 'panel'];
 
 let products = [];
@@ -237,7 +237,7 @@ function renderProducts() {
 
   if (!products.length) {
     state.hidden = false;
-    state.innerHTML = '<img src="assets/logo-mark.svg" alt=""><strong>Nenhum produto cadastrado</strong><span>Clique em "Novo produto" para começar.</span>';
+    state.innerHTML = '<img src="../assets/logo-mark.svg" alt=""><strong>Nenhum produto cadastrado</strong><span>Clique em "Novo produto" para começar.</span>';
   } else if (!list.length) {
     state.hidden = false;
     state.innerHTML = '<strong>Nenhum produto encontrado</strong>';

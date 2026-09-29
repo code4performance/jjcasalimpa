@@ -2,8 +2,8 @@
 
 Site simples para a **JJ Casa Limpa**:
 
-- **Catálogo** (`index.html`): o cliente vê os produtos, preços e promoções, busca e filtra por categoria, monta o carrinho e **envia o pedido pelo WhatsApp** da loja. Feito primeiro para celular.
-- **Área administrativa** (`admin.html`): com login, a equipe cadastra produtos (título, descrição, categoria, preço e até 5 fotos), cria promoções (com datas opcionais), oculta/exclui produtos e configura o número de WhatsApp, a mensagem de boas-vindas e os dados do rodapé. Feita primeiro para computador, mas funciona no celular.
+- **Loja** (`index.html`, endereço `/`): o cliente vê os produtos, preços e promoções, busca e filtra por categoria, monta o carrinho e **envia o pedido pelo WhatsApp** da loja. Feito primeiro para celular.
+- **Área administrativa** (`admin/index.html`, endereço `/admin/` — link separado, não aparece na loja): com login, a equipe cadastra produtos (título, descrição, categoria, preço e até 5 fotos), cria promoções (com datas opcionais), oculta/exclui produtos e configura o número de WhatsApp, a mensagem de boas-vindas e os dados do rodapé. Feita primeiro para computador, mas funciona no celular.
 
 Tudo funciona **de graça**:
 
@@ -61,9 +61,9 @@ Não há servidor próprio nem etapa de "build": são arquivos HTML, CSS e JavaS
 
 ### 4. Últimos ajustes
 
-1. No Supabase, em **Authentication → URL Configuration**, coloque o endereço do site em **Site URL** (ex.: `https://jjcasalimpa.netlify.app`) e adicione `https://jjcasalimpa.netlify.app/admin.html` em **Redirect URLs**. Isso faz o link de "Esqueci minha senha" funcionar.
+1. No Supabase, em **Authentication → URL Configuration**, coloque o endereço do site em **Site URL** (ex.: `https://jjcasalimpa.netlify.app`) e adicione `https://jjcasalimpa.netlify.app/admin/` em **Redirect URLs**. Isso faz o link de "Esqueci minha senha" funcionar.
 2. Se o endereço do site for diferente de `jjcasalimpa.netlify.app`, troque-o nas linhas `og:url` e `og:image` do `index.html` (é a imagem que aparece quando o link é compartilhado no WhatsApp).
-3. Entre em `https://SEU-SITE/admin.html`, vá em **Configurações** e informe o **WhatsApp que recebe os pedidos**, a mensagem de boas-vindas, o contato e o horário.
+3. Entre em `https://SEU-SITE/admin/`, vá em **Configurações** e informe o **WhatsApp que recebe os pedidos**, a mensagem de boas-vindas, o contato e o horário.
 4. Cadastre os produtos e apague os 4 de exemplo (ou rode no SQL Editor: `delete from public.products where id::text like '00000000-0000-4000-8000-%';`).
 
 Pronto! Compartilhe o endereço do site com os clientes.
@@ -121,7 +121,8 @@ Em qualquer caso, lembre de ajustar a **Site URL / Redirect URLs** no Supabase (
 ## Para desenvolvedores
 
 ```
-index.html, admin.html     páginas
+index.html                 loja
+admin/index.html           área administrativa (admin.html só redireciona para admin/)
 css/styles.css             identidade visual e catálogo (mobile first)
 css/admin.css              layout do painel (desktop first)
 js/config.js               URL e chave do Supabase
